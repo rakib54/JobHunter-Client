@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar{
+  background-color: #fff !important;
+}
+.navbar-brand{
+  font-size: 1.9rem !important;
+  color: rgb(37, 33, 32) !important;
+  font-weight: bold;
+}
+
+.navbar a{
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+
+.menu-active {
+  font-weight: bold;
+  border-bottom: 1px solid rgb(26, 23, 23)
+}
+
+.navbar a:hover{
+  color: rgb(31, 20, 20) !important;
+}
+
+.google-btn button {
+  text-decoration: none;
+  border: 1px solid grey;
+  border-radius: 15px;
+  width: 300px;
+  height: 40px;
+  background-color: rgb(202, 76, 54);
+  color: white;
+  font-weight: 500; 
+}
+
+#header{
+  width: 100%;
+  height: 80vh;
+  margin-top: 70px;
+}
+
+#header h1{
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  color: black;
+}
+
+#header brand-name{
+  color: rgb(26, 23, 23);
+}
+#header .btn-home{
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #5697c2;
+  border: 2px solid #3498db;
+  text-decoration: none;
+}
+
+#header .btn-home:hover{
+  background-color: #3498db;
+  color: #fff;
+}
+
+.animated{
+  animation: up-down 2s ease-in-out infinite alternate-reverse both ;
+}
+
+@-webkit-keyframes up-down{
+  0%{
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes up-down {
+  0%{
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Footer Code */
+
+.footer-area li{
+  padding-bottom: 10px;
+}
+
+.social-media .icon{
+  height: 40px;
+  width: 40px;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+.footer-area{
+  background-color: rgb(17, 15, 15);
+  color: white;
+  margin-top: 80px;
+}
+
+/* Sidebar css */
+.sidebar{
+  background-image: linear-gradient(180deg, #485563, rgb(17, 15, 15));
+  position: absolute;
+}
+.sidebar li{
+  margin-bottom: 2em;
+}
+.sidebar a{
+  text-decoration: none;
+}
+.sidebar li:hover span{
+  display: inline-block;
+  transform:translate(2px)
+}
+.sidebar svg{
+  margin-right: 10px;
+}
+
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

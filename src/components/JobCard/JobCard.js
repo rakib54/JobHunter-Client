@@ -1,21 +1,16 @@
 import React from 'react';
 
-const Card = () => {
+const JobCard = ({ job }) => {
     return (
         <>
-           <div className="col-10 col-md-4 mx-auto">
+            <div className="col-10 col-md-4 mx-auto">
                 <div className="card">
-                    <h3 className="text-center">Front End developer</h3>
+                    <h3 className="text-center">{job.jobName}</h3>
                     <div className="card-body">
                         <h4>Brain Station</h4>
-                        <h5 className="card-title">Entry level</h5>
+                        <h5 className="card-title">{job.companyName}</h5>
                         <p className="card-text">
-                            <ul>
-                                <li>React</li>
-                                <li>JavaScript</li>
-                                <li>Node</li>
-                                <li>Html, css</li>
-                            </ul>
+
                         </p>
                         <p>Post by Rakib</p>
                         <div className="d-flex justify-content-between ">
@@ -24,9 +19,9 @@ const Card = () => {
                     </div>
                 </div>
 
-            </div>  
+            </div>
         </>
     );
 };
 
-export default Card;
+export default JobCard;

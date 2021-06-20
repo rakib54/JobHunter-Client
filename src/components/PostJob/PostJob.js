@@ -1,80 +1,74 @@
 import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
+import EmployeePackage from '../EmployeePackage/EmployeePackage';
 
 
 const PostJob = () => {
-    const [data, setData] = useState({
-        jobName: "",
-        companyName: "",
-        position: "",
-        skills: ""
-    })
+    const [paymentSuccess, setPaymentSuccess] = useState(false)
 
-    const InputEvent = (e) => {
-        const { name, value } = e.target;
-
-        setData((preVal) => {
-            return {
-                ...preVal,
-                [name]: value
-            }
-        })
-    }
-
-    const formSubmit = (e) => {
-        e.preventDefault()
-        alert("Your Response is recorded")
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        const BookingData = {
+            jobName: data.jobName,
+            companyName: data.companyName,
+            position: data.position,
+            skills: data.skills,
+        }
+        console.log(BookingData);
 
         fetch(`http://localhost:4000/addJob`, {
             method: 'POST',
-            headers:{
+            headers: {
                 'content-type': 'application/json'
             },
-            body:JSON.stringify(setData)
+            body: JSON.stringify(BookingData)
         })
-        .then(res => res.json())
-        .then(job => console.log(job))
-        
-        setData({
-            jobName: "",
-            companyName: "",
-            position: "",
-            skills: ""
-        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+            .catch(err => console.log(err))
 
     }
-
+    
     return (
         <>
-           <div className="my-5">
-                <h3 style={{fontWeight:"600"}} className="text-center">Post your job</h3>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-10 mx-auto">
-                            <form onSubmit={formSubmit}>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleFormControlInput1" className="form-label">Job Name</label>
-                                    <input name="jobName" value={data.jobName} onChange={InputEvent} required type="text" className="form-control" id="exampleFormControlInput1" placeholder="Job name" />
+
+            {
+                paymentSuccess ?
+                    <div className="my-5">
+                        <h3 style={{ fontWeight: "600" }} className="text-center">Post your job</h3>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6 col-10 mx-auto">
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="mb-3">
+                                            <label className="form-label" htmlFor="">Job Name</label>
+                                            <input className="form-control" defaultValue="" {...register("jobName")} placeholder="job name" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="">Company Name</label>
+                                            <input className="form-control" defaultValue="" {...register("companyName")} placeholder="company name" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="">Position</label>
+                                            <input className="form-control" defaultValue="" {...register("position")} placeholder="position" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label" htmlFor="">Require Skills</label>
+                                            <input className="form-control" {...register("skills", { required: true })} />
+                                            {errors.exampleRequired && <span className="error">This field is required</span>}
+                                        </div>
+
+                                        <input className="btn btn-primary" type="submit" />
+                                    </form>
                                 </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleFormControlInput1" className="form-label">Company Name</label>
-                                    <input name="companyName" value={data.companyName} onChange={InputEvent} required type="text" className="form-control" id="exampleFormControlInput1" placeholder="Company" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleFormControlInput1" className="form-label">Position</label>
-                                    <input name="position" value={data.position} onChange={InputEvent} required type="text" autoComplete="off" className="form-control" id="exampleFormControlInput1" placeholder="Position" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleFormControlTextarea1" className="form-label">Require skill</label>
-                                    <textarea name="skills" value={data.skills} onChange={InputEvent} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                </div>
-                                <div className="col-12">
-                                    <button className="btn btn-primary" type="submit">Post a job</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> 
+
+                    :
+                    <EmployeePackage setPaymentSuccess={setPaymentSuccess} />
+            }
         </>
     );
 };

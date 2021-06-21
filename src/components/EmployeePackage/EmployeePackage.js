@@ -11,12 +11,12 @@ const data = [
     },
     {
         id: 2,
-        name: 'Premium',
+        name: 'Standard',
         post: 30,
         Amount: 180
     }, {
         id: 3,
-        name: 'Pro Premium',
+        name: 'Premium',
         post: 200,
         Amount: 280
     }

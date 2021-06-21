@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import { auth, provider } from './firebase.config';
+import { useHistory } from 'react-router-dom'
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    let history = useHistory()
     const [isSignUp, setIsSignUp] = useState(false)
     const [user, setUser] = useState({
         fullName: "",
@@ -10,8 +14,9 @@ const Login = () => {
         password: "",
         confirmPassword: ""
     })
-    const handleSubmit = () => {
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
     }
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -31,9 +36,8 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                // setUserToken()
-                // setLoggedInUser(user);                
-                // history.push('/')
+                setLoggedInUser(user);
+                history.push('/')
 
             }).catch((error) => {
                 var errorMessage = error.message;
@@ -48,8 +52,8 @@ const Login = () => {
                     result.user.updateProfile({
                         displayName: user.fullName
                     })
-                    // setLoggedInUser(result.user)
-                    // history.push('/')
+                    setLoggedInUser(result.user)
+                    history.push('/postjob')
                 })
                 .catch((err) => alert(err.message))
         }
@@ -62,10 +66,10 @@ const Login = () => {
         auth.signInWithEmailAndPassword(user.email, user.password)
             .then((res) => {
                 const user = res.user;
-                console.log(user);
-                // setLoggedInUser(user);
+                console.log('dasdadfasdfa',user);
+                setLoggedInUser(user);
 
-                // history.push("/")
+                history.push("/postjob")
             })
             .catch((err) => alert(err.message))
 

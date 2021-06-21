@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { UserContext } from '../../App';
-// import { auth } from '../Login/firebase.config';
+import { auth } from '../Login/firebase.config';
+import { UserContext } from '../../App';
 
 const Navbar = () => {
-    // const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
-    // const signOut = () => {
-    //     auth.signOut()
-    //     .then(() =>{
-    //         setLoggedInUser("")
-    //     })
-    //     .catch((error) => console.log(error))
+    const signOut = () => {
+        auth.signOut()
+            .then(() => {
+                setLoggedInUser("")
+            })
+            .catch((error) => console.log(error))
 
-    // }
+    }
 
     return (
         <>
@@ -43,18 +43,16 @@ const Navbar = () => {
                                         <li className="nav-item">
                                             <NavLink activeClassName="menu-active" to="/contact" className="nav-link">Contact</NavLink>
                                         </li>
-                                        {/* {
-                                            loggedInUser.email ? <li className="nav-item">
-                                                <NavLink onClick={signOut} activeClassName="menu-active" to="/login" className="nav-link">Logout</NavLink>
-                                            </li>
+                                        {
+                                            loggedInUser.email ?
+                                                <li className="nav-item">
+                                                    <NavLink onClick={signOut} activeClassName="menu-active" to="/login" className="nav-link">Logout</NavLink>
+                                                </li>
                                                 :
                                                 <li className="nav-item">
                                                     <NavLink activeClassName="menu-active" to="/login" className="nav-link">Login</NavLink>
                                                 </li>
-                                        } */}
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="menu-active" to="/login" className="nav-link">Login</NavLink>
-                                        </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

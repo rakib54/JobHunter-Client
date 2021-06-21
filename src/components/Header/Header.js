@@ -11,7 +11,7 @@ const Header = () => {
                         <div className="col-10 mx-auto">
                             <div className="row">
                                 <div className="col-md-6 pt-5 order-2 order-lg-1 d-flex justify-content-center flex-column">
-                                    <h1>WelCome To Our website</h1>
+                                    <h1>WelCome To Our website!</h1>
                                     <h2 className="my-3 text-secondary">We can help you to find your dream job</h2>
                                     <div className="mt-3">
                                         <NavLink to="/contact" className="btn-home">Contact us</NavLink>

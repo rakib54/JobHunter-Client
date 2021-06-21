@@ -32,7 +32,6 @@ const PostJob = () => {
     
     return (
         <>
-
             {
                 paymentSuccess ?
                     <div className="my-5">
@@ -58,7 +57,6 @@ const PostJob = () => {
                                             <input className="form-control" {...register("skills", { required: true })} />
                                             {errors.exampleRequired && <span className="error">This field is required</span>}
                                         </div>
-
                                         <input className="btn btn-primary" type="submit" />
                                     </form>
                                 </div>

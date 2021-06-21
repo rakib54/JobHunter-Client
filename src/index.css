@@ -157,7 +157,7 @@
 
 /* Sidebar css */
 .sidebar{
-  background-image: linear-gradient(180deg, #485563, rgb(17, 15, 15));
+  background-image: linear-gradient(180deg, #353c44, rgb(17, 15, 15));
   position: absolute;
 }
 .sidebar li{

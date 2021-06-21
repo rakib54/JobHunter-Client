@@ -5,12 +5,15 @@ const JobPost = () => {
     const [jobData, setJobData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/jobs')
+        fetch('https://secret-dawn-37725.herokuapp.com/jobs')
             .then(res => res.json())
             .then(data => {
                 setJobData(data)
             })
     }, [])
+    const handleClick = () => {
+        alert('Job Posts successfully')
+    }
     return (
         <section>
             <div className="container-fluid row font-link">
@@ -23,8 +26,8 @@ const JobPost = () => {
                         <thead>
                             <tr>
                                 <th className="text-secondary" scope="col">Title</th>
-                                <th className="text-secondary" scope="col">Company</th>
                                 <th className="text-secondary" scope="col">Position</th>
+                                <th className="text-secondary" scope="col">Company</th>
                                 <th className="text-secondary" scope="col">Approval</th>
                             </tr>
                         </thead>
@@ -36,14 +39,10 @@ const JobPost = () => {
                                         <td className="text-color">{job.jobName}</td>
                                         <td>{job.position}</td>
                                         <td>{job.companyName}</td>
-                                        <td><button className="btn btn-success btn-sm">approval</button></td>
+                                        <td><button onClick={handleClick} className="btn btn-success btn-sm">approval</button></td>
                                     </tr>
                                 )
                             }
-                            <tr>
-
-
-                            </tr>
                         </tbody>
                     </table>
 

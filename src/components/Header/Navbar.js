@@ -31,15 +31,18 @@ const Navbar = () => {
                                         <li className="nav-item">
                                             <NavLink activeClassName="menu-active" exact to="/" className="nav-link" aria-current="page">Home</NavLink>
                                         </li>
-                                        <li className="nav-item">
+                                        {/* <li className="nav-item">
                                             <NavLink activeClassName="menu-active" to="/apply" className="nav-link">Apply</NavLink>
-                                        </li>
+                                        </li> */}
                                         <li className="nav-item">
                                             <NavLink activeClassName="menu-active" to="/postjob" className="nav-link">Post Job</NavLink>
                                         </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="menu-active" to="/admin" className="nav-link">Admin</NavLink>
-                                        </li>
+                                        {
+                                            loggedInUser.email === 'admin@gmail.com' &&
+                                            <li className="nav-item">
+                                                <NavLink activeClassName="menu-active" to="/admin" className="nav-link">Admin</NavLink>
+                                            </li>
+                                        }
                                         <li className="nav-item">
                                             <NavLink activeClassName="menu-active" to="/contact" className="nav-link">Contact</NavLink>
                                         </li>

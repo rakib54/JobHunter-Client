@@ -16,7 +16,7 @@ const PostJob = () => {
         }
         console.log(BookingData);
 
-        fetch(`http://localhost:4000/addJob`, {
+        fetch(`https://secret-dawn-37725.herokuapp.com/addJob`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
